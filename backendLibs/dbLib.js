@@ -31,4 +31,3 @@ export function writeDB(_chatrooms) {
   //write in-memory DB
   chatrooms = _chatrooms;
 }
-
