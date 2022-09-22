@@ -8,8 +8,8 @@ export default function roomIdMessageRoute(req, res) {
     const roomId = req.query.roomId;
     const findroom = rooms.findIndex((x) => x.roomId === roomId);
     if(findroom === -1)
-      return res.status(404).json({ok: false, message: "Invalid room id"});
-    return res.json({ok: true, message: rooms[findroom].messages})
+      return res.status(404).json({ok: false, mesaage: "Invalid room id"});
+    return res.json({ok: true, mesaages: rooms[findroom].messages})
   } 
 
   else if (req.method === "POST") {
@@ -18,11 +18,11 @@ export default function roomIdMessageRoute(req, res) {
     const findroom = rooms.findIndex((x) => x.roomId === roomId);
     if(findroom === -1)
     {
-      return res.status(404).json({ok: false, message: "Invalid room id"});
+      return res.status(404).json({ok: false, mesaage: "Invalid room id"});
     }
     if(typeof req.body.text !== "string" || req.body.text.length === 0)
     {
-      return res.status(404).json({ok: false, message: "Invalid text input"});
+      return res.status(404).json({ok: false, mesaage: "Invalid text input"});
     }
     
     const text = req.body.text;
@@ -33,7 +33,7 @@ export default function roomIdMessageRoute(req, res) {
     }
     rooms[findroom].messages.push(newText);
     writeDB(rooms);
-    return res.json({ok: true, messages: newText});
+    return res.json({ok: true, message: newText});
     
     
   
