@@ -8,7 +8,7 @@ export default function roomIdMessageRoute(req, res) {
     const roomId = req.query.roomId;
     const findroom = rooms.findIndex((x) => x.roomId === roomId);
     if(findroom === -1)
-      return res.status(404).json({ok: false, mesaage: "Invalid room id"});
+      return res.status(404).json({ok: false, message: "Invalid room id"});
     return res.json({ok: true, mesaages: rooms[findroom].messages})
   } 
 
